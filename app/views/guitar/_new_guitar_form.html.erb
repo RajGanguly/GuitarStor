@@ -1,0 +1,70 @@
+<div class= "parent-container">
+  <%= form_for(@guitar, url: guitar_index_path, :html => { class: "form-inline", id: "new-guitar-create" }, method: 'POST') do |f| %>
+ 
+    <div class="row"> 
+      <div class="col">
+        <%= f.label :brandName, 'Enter a Brand Name :   ' %> 
+      </div>  
+      <div class="col">
+        <%= f.text_field :brandName, :class => 'form-control large-input-grp', :id => "guitar-brand-name-text", :placeholder => "Enter any Brand Name" %>
+      </div>
+      <div class="w-100"></div> 
+
+      <div class="col">
+        <%= f.label :modelName, 'Enter Model Name :   ' %> 
+      </div>  
+      <div class="col">
+        <%= f.text_field :modelName, :class => 'form-control large-input-grp', :id => "guitar-model-name-text", :placeholder => "Enter any model name" %>
+      </div>
+      <div class="w-100"></div>  
+
+      <div class="col">
+        <%= f.label :typeName, 'Enter Guitar Type :   ' %>  
+      </div>  
+      <div class="col">
+        <%= f.select :typeName, options_for_select(["Acoustic","Electric"]), {}, class: "form-control" %>
+      </div>
+
+      <div class="w-100"></div>  
+
+      <div class="col">
+        <%= f.label :stringsNo, 'Enter Strings :   ' %>  
+      </div>  
+      <div class="col">
+        <%= f.number_field :stringsNo, :class => 'form-control large-input-grp', :id => "number-of-strings-text", :placeholder => "Enter No. of Strings" %>  
+      </div>
+
+      <div class="w-100"></div>  
+
+      <div class="col">
+        <%= f.label :price, 'Enter Price in INR:' %>  
+      </div>  
+      <div class="col">
+        <%= f.number_field :price, :class => 'form-control large-input-grp', :id => "guitar-price-text", :placeholder => "Enter Price :" %>  
+      </div>
+
+
+      <div class="w-100"></div>  
+
+      <div class="col">
+        <%= f.label :serial, 'Enter Serial Number :   ' %>  
+      </div>  
+      <div class="col">
+        <%= f.number_field :serial, :class => 'form-control large-input-grp', :id => "guitar-serial-number-text", :placeholder => "Enter Serial Number :" %>  
+      </div>
+
+
+      <br>
+      <br>
+      <div class="w-100">
+        <span style="margin-left: 50%;">
+          <%= button_tag(type: 'submit', class: "btn btn-success", id: "create_guitar_btn") do %>
+          Create 
+          <% end %>          
+        </span>
+       
+      </div>
+    </div>    
+    
+  <%end%>
+</div>

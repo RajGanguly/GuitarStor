@@ -1,0 +1,40 @@
+<div class="container-fluid">
+   <div class="row-fluid">
+      <div style="margin-left: 23%;">
+        <h3>List of all the guitars in your inventory</h3>
+      </div>
+   </div>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+	    <% @guitars.each do |guitar| %>
+			<div class="card" style="width: 20rem;">
+			  <%= image_tag "misc/guitar-icon.jpg", height: '100', width: '100' %>
+			  <div class="card-body" id= "guitar_card_<%= guitar.id %>">
+			    <h4 class="card-title"><%= guitar.brandName %></h4>
+			    <p class="card-text">The guitar <%= guitar.modelName %> with the serial number <h4><%= guitar.serial%></h4> is a premier <%= guitar.stringsNo %> string guitar. The guitar was bought on <h4><%= guitar.guitar_transaction.buyDate %></h4> The price of the guitar is <h4><%= guitar.price %></h4></p>
+			    <span>
+                   <%= select_tag "strap-type", options_for_select([ "Regular", "Large", "Extra Large"], "Regular")	%>		    
+			    </span>
+			    <span id="item-desc-<%=guitar.id %>">
+				    <% if guitar.guitar_transaction.sellDate == nil %>
+				      <a href="#" class="btn btn-danger" id="guitar-sell-btn-<%= guitar.id %>" onclick="javascript: sellGuitar('<%= guitar.id %>');">Sell</a>
+				    <% else %>
+				       <p><h3 style="color: red;">This item is already sold on <%= guitar.guitar_transaction.sellDate %></h3></p>
+				    <% end %>  		    	
+			    </span>
+			    <span id="sold-item-desc-<%=guitar.id %>">
+			    	
+			    </span>
+
+
+			  </div>
+			</div>	
+		<% end %>		
+	</div>
+</div>
+
+<br>
+<br>
+<br>
